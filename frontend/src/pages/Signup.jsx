@@ -11,7 +11,7 @@ function Signup() {
     const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-        const response = await fetch(`${API_URL}auth/register`, {
+        const response = await fetch(`${API_URL}/auth/register`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, email, password })
@@ -56,7 +56,7 @@ function Signup() {
                             onClick={handleSignUp}
                             type='submit'
                         >Sign Up</button>
-                        <p className='text-blue-500 underline cursor-pointer'>Forgot Password?</p>
+                        <Link to={'/forgotPassword'} className='text-blue-500 underline cursor-pointer'>Forgot Password?</Link>
                         <Link to={'/login'}><p className='text-blue-500 underline cursor-pointer' >Sign In</p></Link>
                     </div>
                 </div>

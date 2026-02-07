@@ -52,7 +52,7 @@ function Login() {
                     type='submit'
                     onClick={handleLogin}
                     >Login</button>
-                    <p className='text-blue-500 underline cursor-pointer'>Forgot Password?</p>
+                    <Link to={'/forgotPassword'} className='text-blue-500 underline cursor-pointer'>Forgot Password?</Link>
                     <Link to={'/signup'}><p className='text-blue-500 underline cursor-pointer'>Sign Up</p></Link>
                 </div>
             </div>

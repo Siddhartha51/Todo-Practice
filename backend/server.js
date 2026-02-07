@@ -35,27 +35,15 @@ app.post('/todos', authorize, async(req, res)=>{
     }
 });
 
-app.delete('/todos/:id', async(req, res)=>{
+app.delete('/todos/:id', authorize, async(req, res)=>{
     try{
     const {id} = req.params;
-    await pool.query('DELETE FROM todos WHERE id = $1', [id]);
+    const result=await pool.query('DELETE FROM todos WHERE id = $1 AND user_id = $2', [id, req.user.id]);
     res.json("Deleted successfully")
 }catch(err){
     console.error(err.message);
     res.status(500).json({error: "Server error during deletion"});
 }
-})
-
-app.get('/todos', authorize, async (req, res)=>{
-    try {
-        const result = await pool.query(
-            'SELECT * FROM todos WHERE user_id = $1 ORDER BY id ASC',
-            [req.user.id]
-        )
-        res.json(result.rows)
-    } catch (err) {
-        res.status(500).send(err.message)
-    }
 })
 
 app.use('/auth',authRoutes)

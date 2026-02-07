@@ -5,6 +5,8 @@ import Home from './pages/Home'
 import Header from './components/header'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
+import ForgotPassword from './pages/ForgotPassword'
+import ResetPassword from './pages/ResetPassword'
 
 
 function App() {
@@ -18,6 +20,8 @@ function App() {
           <Route path='/todo' element={<Todo searchTerm={searchTerm}/>} />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
+          <Route path='/forgotPassword' element={<ForgotPassword />} />
+          <Route path='/reset-Password/:token' element={<ResetPassword />} />
         </Routes>
       </div>
       
